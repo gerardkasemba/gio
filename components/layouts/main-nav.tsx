@@ -21,8 +21,8 @@ const Header: React.FC<HeaderProps> = ({ isSidebarOpen, setSidebarOpen }) => {
         >
           {isSidebarOpen ? <RiCloseLine size={24} /> : <RiMenuLine size={24} />}
         </button>
-        <Link href="/" className="text-lg font-bold text-gray-700">
-          GIO
+        <Link href="/" className="text-2xl font-bold text-[#007F5F]">
+          MarketLens
         </Link>
       </div>
 

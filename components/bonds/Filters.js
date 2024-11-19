@@ -3,13 +3,11 @@
 import { useState } from "react";
 import { RiFilterLine } from "react-icons/ri";
 
-const Filters = ({
-  selectedIndustry = "All",
-  setSelectedIndustry = () => {},
-  selectedSector = "All",
-  setSelectedSector = () => {},
-  selectedMarketCap = "All",
-  setSelectedMarketCap = () => {},
+const BondFilters = ({
+  selectedBondType = "All",
+  setSelectedBondType = () => {},
+  selectedCreditRating = "All",
+  setSelectedCreditRating = () => {},
   selectedRegion = "All",
   setSelectedRegion = () => {},
   selectedTimeView = "current",
@@ -17,9 +15,8 @@ const Filters = ({
   selectedMonthYear = "",
   setSelectedMonthYear = () => {},
   resetFilters = () => {},
-  industries = [],
-  sectors = [],
-  marketCaps = [],
+  bondTypes = [],
+  creditRatings = [],
   regions = [],
   timeViews = [],
   availableMonthYears = [],
@@ -50,7 +47,7 @@ const Filters = ({
         } lg:block bg-[#f9f9f9] p-6 mt-4 rounded-lg border border-gray-200`}
       >
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold text-[#226f54]">Filters</h2>
+          <h2 className="text-xl font-semibold text-[#226f54]">Bond Filters</h2>
           <button
             onClick={resetFilters}
             className="px-4 py-2 bg-red-500 text-white text-md rounded-lg hover:bg-red-600 focus:outline-none focus:ring focus:ring-red-200"
@@ -60,80 +57,54 @@ const Filters = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Industry Filter */}
+          {/* Bond Type Filter */}
           <div>
             <label
-              htmlFor="industry"
+              htmlFor="bondType"
               className="block text-md font-medium text-gray-700 mb-2"
             >
-              Select Industry
+              Select Bond Type
             </label>
             <select
-              id="industry"
-              value={selectedIndustry}
-              onChange={(e) => setSelectedIndustry(e.target.value)}
+              id="bondType"
+              value={selectedBondType}
+              onChange={(e) => setSelectedBondType(e.target.value)}
               className="w-full px-4 py-2 border rounded-lg bg-gray-50 text-gray-700 focus:ring-[#226f54] focus:border-[#226f54] shadow-md"
             >
-              {industries.length > 0 ? (
-                industries.map((industry) => (
-                  <option key={industry} value={industry}>
-                    {industry}
+              {bondTypes.length > 0 ? (
+                bondTypes.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
                   </option>
                 ))
               ) : (
-                <option value="All">No Industries Available</option>
+                <option value="All">No Bond Types Available</option>
               )}
             </select>
           </div>
 
-          {/* Sector Filter */}
+          {/* Credit Rating Filter */}
           <div>
             <label
-              htmlFor="sector"
+              htmlFor="creditRating"
               className="block text-md font-medium text-gray-700 mb-2"
             >
-              Select Sector
+              Select Credit Rating
             </label>
             <select
-              id="sector"
-              value={selectedSector}
-              onChange={(e) => setSelectedSector(e.target.value)}
+              id="creditRating"
+              value={selectedCreditRating}
+              onChange={(e) => setSelectedCreditRating(e.target.value)}
               className="w-full px-4 py-2 border rounded-lg bg-gray-50 text-gray-700 focus:ring-[#226f54] focus:border-[#226f54] shadow-md"
             >
-              {sectors.length > 0 ? (
-                sectors.map((sector) => (
-                  <option key={sector} value={sector}>
-                    {sector}
+              {creditRatings.length > 0 ? (
+                creditRatings.map((rating) => (
+                  <option key={rating} value={rating}>
+                    {rating}
                   </option>
                 ))
               ) : (
-                <option value="All">No Sectors Available</option>
-              )}
-            </select>
-          </div>
-
-          {/* Market Cap Filter */}
-          <div>
-            <label
-              htmlFor="marketCap"
-              className="block text-md font-medium text-gray-700 mb-2"
-            >
-              Select Market Cap
-            </label>
-            <select
-              id="marketCap"
-              value={selectedMarketCap}
-              onChange={(e) => setSelectedMarketCap(e.target.value)}
-              className="w-full px-4 py-2 border rounded-lg bg-gray-50 text-gray-700 focus:ring-[#226f54] focus:border-[#226f54] shadow-md"
-            >
-              {marketCaps.length > 0 ? (
-                marketCaps.map((cap) => (
-                  <option key={cap} value={cap}>
-                    {cap}
-                  </option>
-                ))
-              ) : (
-                <option value="All">No Market Caps Available</option>
+                <option value="All">No Credit Ratings Available</option>
               )}
             </select>
           </div>
@@ -224,4 +195,4 @@ const Filters = ({
   );
 };
 
-export default Filters;
+export default BondFilters;
